@@ -27,13 +27,13 @@ let composeMessage meth (url : Uri) headers body =
 
 let get url headers =
     use client = new HttpClient ()
-    composeMessage Net.Http.HttpMethod.Get (Uri url) headers None
+    composeMessage HttpMethod.Get (Uri url) headers None
     |> client.SendAsync
     |> result
 
 let post url headers body =
     use client = new HttpClient ()
-    composeMessage Net.Http.HttpMethod.Post (Uri url) headers (Some body)
+    composeMessage HttpMethod.Post (Uri url) headers (Some body)
     |> client.SendAsync
     |> result
 
