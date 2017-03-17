@@ -27,12 +27,16 @@ let composeMessage meth (url : Uri) headers body =
 
 let get url headers =
     use client = new HttpClient ()
+    // HttpMethod is qualified to avoid collision with FSharp.Data.HttpMethod,
+    // if FSharp.Data is imported in a script as well as Furl.
     composeMessage Net.Http.HttpMethod.Get (Uri url) headers None
     |> client.SendAsync
     |> result
 
 let post url headers body =
     use client = new HttpClient ()
+    // HttpMethod is qualified to avoid collision with FSharp.Data.HttpMethod,
+    // if FSharp.Data is imported in a script as well as Furl.
     composeMessage Net.Http.HttpMethod.Post (Uri url) headers (Some body)
     |> client.SendAsync
     |> result
