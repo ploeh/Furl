@@ -42,4 +42,5 @@ let post url headers body =
     |> result
 
 let bodyText (resp : HttpResponseMessage) =
-    resp.Content.ReadAsStringAsync().Result
+    resp.Content.ReadAsStringAsync ()
+    |> result
